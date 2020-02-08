@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import EthernetForm from "./Components/EthernetForm/EthernetForm";
+import WirelessForm from "./Components/WirelessForm/WirelessForm";
+import Buttons from "./Components/buttons/Buttons";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component {
+
+
+  handlerSubmitForm = (event) => {
+    event.preventDefault()
+    
+    console.log('Success')
+   
+  }
+  render() {
+    
+    return (
+      <form className="body" onSubmit={this.handlerSubmitForm}>
+        <div className="block-left">
+          <EthernetForm />
+        </div>
+
+        <div className="block-right">
+          <WirelessForm />
+        </div>
+        <Buttons  />
+      </form>
+    );
+  }
 }
-
-export default App;
