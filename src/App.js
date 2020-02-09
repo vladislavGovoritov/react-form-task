@@ -106,6 +106,7 @@ export default class App extends React.Component {
   };
 
   render() {
+    
     return (
       <form className="body" onSubmit={this.handlerSubmitForm} >
         <div className="block-left">

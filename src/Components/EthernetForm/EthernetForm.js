@@ -8,7 +8,7 @@ export default function EthernetForm(props)  {
     const { ethernetIP,  ethernetSubnet,  ethernetDNS,
             handlerIP, handlerDNS, handlerSubnet,
             errorIP, errorSubnet, errorDNS } = props;
- 
+            
     return (
       <div>
         <div className="eDiv">
