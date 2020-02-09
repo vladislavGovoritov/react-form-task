@@ -6,7 +6,9 @@ import {WirelessFormItem3} from '../WirelessFormItem/WirelessFormItem3'
 import "./WirelessForm.css";
 
 export default function WirelessForm(props)  {
-  const  {textIP,textSubnet, textDNS, handlerIP,handlerSubnet,handlerDNS} = props
+  const  {wirelessIP, wirelessSubnet, wirelessDNS,
+          wirelessHandlerIP,wirelessHandlerSubnet,wirelessHandlerDNS,
+          wirErrorIP,wirErrorSubnet,wirErrorDNS} = props
     
     return (
       <div>
@@ -27,10 +29,13 @@ export default function WirelessForm(props)  {
           </label>
 
           <WirelessFormItem2
-          textIP={textIP}
-          textSubnet={textSubnet}
-          handlerIP={handlerIP}
-          handlerSubnet={handlerSubnet}
+          textIP={wirelessIP}
+          textSubnet={wirelessSubnet}
+          wirelessHandlerIP={wirelessHandlerIP}
+          wirelessHandlerSubnet={wirelessHandlerSubnet}
+          wirErrorIP={wirErrorIP}
+          wirErrorSubnet={wirErrorSubnet}
+          
 
           />
         </div>
@@ -42,8 +47,9 @@ export default function WirelessForm(props)  {
           </label>
 
           <WirelessFormItem3
-          textDNS={textDNS}
-          handlerDNS={handlerDNS}
+          textDNS={wirelessDNS}
+          wirelessHandlerDNS={wirelessHandlerDNS}
+          wirErrorDNS={wirErrorDNS}
           />
         </div>
       </div>

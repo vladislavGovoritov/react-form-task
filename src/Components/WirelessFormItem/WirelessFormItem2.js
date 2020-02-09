@@ -1,7 +1,9 @@
 import React from "react";
 
 export const WirelessFormItem2 = (props) => {
-    const {textIP,textSubnet, handlerIP,handlerSubnet} = props
+    const {wirelessIP, wirelessSubnet,
+           wirelessHandlerIP,wirelessHandlerSubnet,
+           wirErrorIP,wirErrorSubnet} = props
   return (
     <React.Fragment>
       <label className="label-style">
@@ -11,12 +13,14 @@ export const WirelessFormItem2 = (props) => {
 
       <label className="label-style">
         IP address:
-        <input type="text" value={textIP} onChange={handlerIP} />
+        <input type="text" value={wirelessIP} onChange={wirelessHandlerIP} />
+        <div style={{color:'red',fontSize:'12px'}}>{wirErrorIP}</div>
       </label>
 
       <label className="label-style">
         Subnet mask:
-        <input type="text" value={textSubnet} onChange={handlerSubnet} />
+        <input type="text" value={wirelessSubnet} onChange={wirelessHandlerSubnet} />
+        <div style={{color:'red',fontSize:'12px'}}>{wirErrorSubnet}</div>
       </label>
 
       <label className="label-style">

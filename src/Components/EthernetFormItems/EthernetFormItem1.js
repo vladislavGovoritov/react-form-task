@@ -1,7 +1,8 @@
 import React from "react";
 
 export const EthernetFormItem1 = (props) => {
-    const {textIP, textSubnet ,handlerIP,handlerSubnet} = props
+    const { ethernetIP,  ethernetSubnet , handlerIP, handlerSubnet, errorIP, errorSubnet} = props
+    
   return (
     <React.Fragment>
       <label className="label-style">
@@ -14,17 +15,30 @@ export const EthernetFormItem1 = (props) => {
         <input
           type="text"
           pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"
-          value={textIP}
+          value={ethernetIP}
           onChange={handlerIP}
           minLength="12"
           maxLength="15"
           formNoValidate
+          placeholder="example:223.255.255.1"
         />
+        <div style={{color:'red',fontSize:'12px'}}>{errorIP}</div>
       </label>
+      
 
       <label className="label-style">
         Subnet mask:
-        <input type="text" value={textSubnet} onChange={handlerSubnet} />
+        <input 
+        type="text"
+        pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"
+        value={ethernetSubnet}
+        onChange={handlerSubnet}
+        minLength="12"
+        maxLength="15"
+        formNoValidate
+        placeholder="example:223.255.255.1"
+         />
+        <div style={{color:'red',fontSize:'12px'}}>{errorSubnet}</div>
       </label>
 
       <label className="label-style">

@@ -1,7 +1,7 @@
 import React from "react";
 
 export const WirelessFormItem3 = (props) => {
-    const {textDNS, handlerDNS} = props
+    const {wirelessDNS, wirelessHandlerDNS,wirErrorDNS} = props
   return (
     <React.Fragment>
       <label className="label-style">
@@ -11,7 +11,8 @@ export const WirelessFormItem3 = (props) => {
 
       <label className="label-style">
         Preferred DNS server:
-        <input type="text" value={textDNS} onChange={handlerDNS} />
+        <input type="text" value={wirelessDNS} onChange={wirelessHandlerDNS} />
+        <div style={{color:'red',fontSize:'12px'}}>{wirErrorDNS}</div>
       </label>
 
       <label className="label-style">

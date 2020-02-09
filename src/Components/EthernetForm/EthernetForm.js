@@ -5,8 +5,10 @@ import { EthernetFormItem2 } from "../EthernetFormItems/EthernetFormItem2";
 export default function EthernetForm(props)  {
   
  
-    const {textIP, textSubnet, textDNS, handlerIP, handlerDNS,handlerSubnet } = props;
-
+    const { ethernetIP,  ethernetSubnet,  ethernetDNS,
+            handlerIP, handlerDNS, handlerSubnet,
+            errorIP, errorSubnet, errorDNS } = props;
+ 
     return (
       <div>
         <div className="eDiv">
@@ -18,11 +20,13 @@ export default function EthernetForm(props)  {
             Obtain an IP address automatically(DHCP/BootP)
           </label>
           <EthernetFormItem1
-            textIP={textIP}
-            textSubnet={textSubnet}
-            textDNS={textDNS}
+            textIP={ethernetIP}
+            textSubnet={ethernetSubnet}
             handlerIP={handlerIP}
             handlerSubnet={handlerSubnet}
+            errorIP={errorIP}
+            errorSubnet={errorSubnet}
+            
           />
         </div>
 
@@ -32,10 +36,9 @@ export default function EthernetForm(props)  {
             Obtain DNS server address automatically
           </label>
           <EthernetFormItem2
-            textIP={textIP}
-            textSubnet={textSubnet}
-            textDNS={textDNS}
+            textDNS={ethernetDNS}
             handlerDNS={handlerDNS}
+            errorDNS={errorDNS}
           />
         </div>
       </div>
