@@ -1,59 +1,23 @@
-import React, { Component } from "react";
+import React   from "react";
+import {WirelessFormItem1} from '../WirelessFormItem/WirelessFormItem1'
+import {WirelessFormItem2} from '../WirelessFormItem/WirelessFormItem2'
+import {WirelessFormItem3} from '../WirelessFormItem/WirelessFormItem3'
 
 import "./WirelessForm.css";
 
-export default class WirelessForm extends Component {
-  state = {
-    textIP: "",
-    textSubnet: "",
-    textDNS: ""
-  };
-
-  handlerIP = (event) => {
-    this.setState({
-      textIP: event.target.value
-    })
-   }
-   handlerSubnet = (event) => {
-     this.setState({
-       textSubnet: event.target.value
-     })
-   }
- 
-   handlerDNS = (event) => {
-     this.setState({
-       textDNS: event.target.value
-     })
-   }
-
-   
-  render() {
-    const { textIP, textSubnet, textDNS } = this.state;
+export default function WirelessForm(props)  {
+  const  {textIP,textSubnet, textDNS, handlerIP,handlerSubnet,handlerDNS} = props
+    
     return (
       <div>
         <div className="wirDiv">
           <strong>Wireless Settings</strong>
         </div>
         <div className="wForm1">
-          <label className="label-style">
-            Enable wifi:
-            <input type="checkbox" />
-          </label>
-
-          <label className="label-style">
-            Wireless Network Name:
-            <input type="text" placeholder="Please select" />
-          </label>
-
-          <label className="label-style">
-            Enable Wireless Security:
-            <input type="checkbox" />
-          </label>
-
-          <label className="label-style">
-            Security Key:
-            <input type="text" />
-          </label>
+         <WirelessFormItem1 
+         
+         
+         />
         </div>
 
         <div className="wForm2">
@@ -62,25 +26,13 @@ export default class WirelessForm extends Component {
             Obtain an IP address automatically (DHCP/BootP):
           </label>
 
-          <label className="label-style">
-            <input type="radio" />
-            Use the following IP address:
-          </label>
+          <WirelessFormItem2
+          textIP={textIP}
+          textSubnet={textSubnet}
+          handlerIP={handlerIP}
+          handlerSubnet={handlerSubnet}
 
-          <label className="label-style">
-            IP address:
-            <input type="text" value={textIP} onChange={this.handlerIP} />
-          </label>
-
-          <label className="label-style">
-            Subnet mask:
-            <input type="text" value={textSubnet} onChange={this.handlerSubnet}/>
-          </label>
-
-          <label className="label-style">
-            Default Gateway:
-            <input type="text" />
-          </label>
+          />
         </div>
 
         <div className="wForm3">
@@ -89,22 +41,11 @@ export default class WirelessForm extends Component {
             Obtain DNS server address automatically:
           </label>
 
-          <label className="label-style">
-            <input type="radio" />
-            Use the following DS server address:
-          </label>
-
-          <label className="label-style">
-            Preferred DNS server:
-            <input type="text" value={textDNS}  onChange={this.handlerDNS}/>
-          </label>
-
-          <label className="label-style">
-            Alternative DNS server:
-            <input type="text" />
-          </label>
+          <WirelessFormItem3
+          textDNS={textDNS}
+          handlerDNS={handlerDNS}
+          />
         </div>
       </div>
     );
-  }
 }
