@@ -1,11 +1,18 @@
 import React from "react";
 
 export const WirelessFormItem3 = (props) => {
-    const {wirelessDNS, wirelessHandlerDNS,wirErrorDNS} = props
+    const {wirelessDNS, wirelessHandlerDNS,wirErrorDNS,
+           selectedOption, handerOptionChange} = props
   return (
     <React.Fragment>
       <label className="label-style">
-        <input type="radio" />
+        <input 
+        type="radio" 
+        value='option8' 
+        defaultChecked={selectedOption ==='option8' } 
+        onChange={handerOptionChange}
+        name='selected4'
+        />
         Use the following DS server address:
       </label>
 

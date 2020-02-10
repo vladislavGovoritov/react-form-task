@@ -6,7 +6,6 @@ export default function Buttons(props) {
         <div className='buttons'>
             <button 
             type='submit'
-            //onSubmit={ props.handlerSubmitForm}
             className="btn btn-primary"
             >Save</button>
             <button 

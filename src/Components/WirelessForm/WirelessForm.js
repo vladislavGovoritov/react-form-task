@@ -8,7 +8,8 @@ import "./WirelessForm.css";
 export default function WirelessForm(props)  {
   const  {wirelessIP, wirelessSubnet, wirelessDNS,
           wirelessHandlerIP,wirelessHandlerSubnet,wirelessHandlerDNS,
-          wirErrorIP,wirErrorSubnet,wirErrorDNS} = props
+          wirErrorIP,wirErrorSubnet,wirErrorDNS,
+          selectedOption, handerOptionChange} = props
     
     return (
       <div>
@@ -17,14 +18,18 @@ export default function WirelessForm(props)  {
         </div>
         <div className="wForm1">
          <WirelessFormItem1 
-         
-         
          />
         </div>
 
         <div className="wForm2">
           <label className="label-style">
-            <input type="radio" />
+            <input 
+            type="radio" 
+            value='option5' 
+            defaultChecked={selectedOption ==='option5' } 
+            onChange={handerOptionChange}
+            name='selected3'
+            />
             Obtain an IP address automatically (DHCP/BootP):
           </label>
 
@@ -35,6 +40,9 @@ export default function WirelessForm(props)  {
           wirelessHandlerSubnet={wirelessHandlerSubnet}
           wirErrorIP={wirErrorIP}
           wirErrorSubnet={wirErrorSubnet}
+          selectedOption={selectedOption}
+          handerOptionChange={handerOptionChange}
+
           
 
           />
@@ -42,7 +50,13 @@ export default function WirelessForm(props)  {
 
         <div className="wForm3">
           <label className="label-style">
-            <input type="radio" />
+            <input 
+            type="radio"
+            value='option7' 
+            defaultChecked={selectedOption ==='option7' } 
+            onChange={handerOptionChange}
+            name='selected4'
+             />
             Obtain DNS server address automatically:
           </label>
 
@@ -50,6 +64,8 @@ export default function WirelessForm(props)  {
           textDNS={wirelessDNS}
           wirelessHandlerDNS={wirelessHandlerDNS}
           wirErrorDNS={wirErrorDNS}
+          selectedOption={selectedOption}
+          handerOptionChange={handerOptionChange}
           />
         </div>
       </div>

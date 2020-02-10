@@ -3,11 +3,17 @@ import React from "react";
 export const WirelessFormItem2 = (props) => {
     const {wirelessIP, wirelessSubnet,
            wirelessHandlerIP,wirelessHandlerSubnet,
-           wirErrorIP,wirErrorSubnet} = props
+           wirErrorIP,wirErrorSubnet,
+           selectedOption, handerOptionChange} = props
   return (
     <React.Fragment>
       <label className="label-style">
-        <input type="radio" />
+        <input 
+        type="radio"
+        value='option6' 
+        defaultChecked={selectedOption ==='option6' } 
+        onChange={handerOptionChange}
+        name='selected3' />
         Use the following IP address:
       </label>
 

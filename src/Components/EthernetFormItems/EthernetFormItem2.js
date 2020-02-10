@@ -1,11 +1,17 @@
 import React from "react";
 
 export const EthernetFormItem2 = props => {
-  const {  ethernetDNS, handlerDNS,errorDNS } = props;
+  const {  ethernetDNS, handlerDNS,errorDNS ,selectedOption , handerOptionChange } = props;
   return (
     <React.Fragment>
       <label className="label-style">
-        <input type="radio" />
+        <input 
+        type="radio"
+        value='option4'
+        defaultChecked={selectedOption ==='option4' } 
+        onChange={handerOptionChange}
+        name='selected2'
+         />
         Use the following DS server address:
       </label>
 

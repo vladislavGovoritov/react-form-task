@@ -6,20 +6,26 @@ import "./App.css";
 
 export default class App extends React.Component {
   state = {
-  ethernetIP: "",
-  ethernetSubnet: "",
-  ethernetDNS: "",
-  wirelessIP: "",
-  wirelessSubnet: "",
-  wirelessDNS: "",
-  errorIP: "",
-  errorSubnet: "",
-  errorDNS: "",
-  wirErrorIP:"",
-  wirErrorSubnet:"",
-  wirErrorDNS:""
-  }
-  
+    ethernetIP: "",
+    ethernetSubnet: "",
+    ethernetDNS: "",
+    wirelessIP: "",
+    wirelessSubnet: "",
+    wirelessDNS: "",
+    errorIP: "",
+    errorSubnet: "",
+    errorDNS: "",
+    wirErrorIP: "",
+    wirErrorSubnet: "",
+    wirErrorDNS: "",
+    selectedOption: "option1"
+  };
+
+    
+  handerOptionChange = event => {
+    this.setState({ selectedOption: event.target.value });
+    console.log(event.target.value, "checked");
+  };
 
   validate = () => {
     let errorIP = "";
@@ -28,7 +34,7 @@ export default class App extends React.Component {
     let wirErrorIP = "";
     let wirErrorSubnet = "";
     let wirErrorDNS = "";
-    if (this.state.ethernetIP  === "") {
+    if (this.state.ethernetIP === "") {
       errorIP = "Поле не может быть пустым";
     }
     if (this.state.ethernetSubnet === "") {
@@ -47,11 +53,25 @@ export default class App extends React.Component {
       wirErrorDNS = "Поле не может быть пустым";
     }
 
-    if (errorIP || errorSubnet || errorDNS || wirErrorIP || wirErrorSubnet ||wirErrorDNS) {
-      this.setState({ errorIP, errorSubnet, errorDNS, wirErrorIP, wirErrorSubnet, wirErrorDNS });
+    if (
+      errorIP ||
+      errorSubnet ||
+      errorDNS ||
+      wirErrorIP ||
+      wirErrorSubnet ||
+      wirErrorDNS
+    ) {
+      this.setState({
+        errorIP,
+        errorSubnet,
+        errorDNS,
+        wirErrorIP,
+        wirErrorSubnet,
+        wirErrorDNS
+      });
       return false;
     }
-    
+
     return true;
   };
 
@@ -95,20 +115,20 @@ export default class App extends React.Component {
 
     if (isValid) {
       console.log(this.state);
-      this.setState({ethernetIP: "",
-      ethernetSubnet: "",
-      ethernetDNS: "",
-      wirelessIP: "",
-      wirelessSubnet: "",
-      wirelessDNS: "",
-      })
+      this.setState({
+        ethernetIP: "",
+        ethernetSubnet: "",
+        ethernetDNS: "",
+        wirelessIP: "",
+        wirelessSubnet: "",
+        wirelessDNS: ""
+      });
     }
   };
 
   render() {
-    
     return (
-      <form className="body" onSubmit={this.handlerSubmitForm} >
+      <form className="body" onSubmit={this.handlerSubmitForm}>
         <div className="block-left">
           <EthernetForm
             handlerIP={this.handlerIP}
@@ -117,6 +137,7 @@ export default class App extends React.Component {
             errorIP={this.state.errorIP}
             errorSubnet={this.state.errorSubnet}
             errorDNS={this.state.errorDNS}
+            handerOptionChange={this.handerOptionChange}
           />
         </div>
 
@@ -128,7 +149,7 @@ export default class App extends React.Component {
             wirErrorIP={this.state.wirErrorIP}
             wirErrorSubnet={this.state.wirErrorSubnet}
             wirErrorDNS={this.state.wirErrorDNS}
-            
+            handerOptionChange={this.handerOptionChange}
           />
         </div>
         <Buttons />

@@ -1,12 +1,23 @@
 import React from "react";
 
 export const EthernetFormItem1 = (props) => {
-    const { ethernetIP,  ethernetSubnet , handlerIP, handlerSubnet, errorIP, errorSubnet} = props
-    
+    const { ethernetIP,  ethernetSubnet ,
+            handlerIP, handlerSubnet,
+            errorIP, errorSubnet,
+            handerOptionChange, selectedOption
+          } = props
+
+   
   return (
     <React.Fragment>
       <label className="label-style">
-        <input type="radio" />
+        <input 
+        type="radio" 
+        value='option2' 
+        defaultChecked={selectedOption ==='option2' } 
+        onChange={handerOptionChange}
+        name='selected1'
+        />
         Use the following IP address:
       </label>
 
