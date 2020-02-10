@@ -16,12 +16,14 @@ export default function EthernetForm(props)  {
         <div className="eDiv">
           <strong>Ethernet Settings</strong>
         </div>
-        <div className="iForm1">
+          <div className="iForm1">
           <label className="label-style">
             <input type="radio" value='option1'
             defaultChecked={selectedOption === 'option1'}
             onChange={handerOptionChange}
-            name='selected1' />
+            name='selected1'
+            
+             />
             Obtain an IP address automatically(DHCP/BootP)
           </label>
           <EthernetFormItem1
@@ -35,6 +37,7 @@ export default function EthernetForm(props)  {
             handerOptionChange={handerOptionChange}
             
           />
+        
         </div>
 
         <div className="iForm2">

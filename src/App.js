@@ -21,8 +21,9 @@ export default class App extends React.Component {
     selectedOption: "option1"
   };
 
-    
+
   handerOptionChange = event => {
+    
     this.setState({ selectedOption: event.target.value });
     console.log(event.target.value, "checked");
   };
