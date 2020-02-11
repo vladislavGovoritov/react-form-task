@@ -1,12 +1,11 @@
 import React from "react";
 import EthernetForm from "./Components/EthernetForm/EthernetForm";
 import WirelessForm from "./Components/WirelessForm/WirelessForm";
-import Buttons from "./Components/Buttons/Buttons";
+import {Buttons} from "./Components/Buttons/Buttons";
 import "./App.css";
 
-export default class App extends React.Component {
-  state = {
-    ethernetIP: "",
+const initialState = {
+    ethernetIP:"",
     ethernetSubnet: "",
     ethernetDNS: "",
     wirelessIP: "",
@@ -18,14 +17,31 @@ export default class App extends React.Component {
     wirErrorIP: "",
     wirErrorSubnet: "",
     wirErrorDNS: "",
-    selectedOption: "option1"
-  };
+    selectedOption: "",
+    disabled: false,
+    wirelessNetworkName:"",
+    securityKey:""
+
+}
+export default class App extends React.Component {
+
+  state = initialState
 
 
-  handerOptionChange = event => {
+ /*  handlerSelectDisbled = () => {
+    this.setState({
+      isSelectDisabled: true
+    })
+  } */
+
+
+  handerOptionChange = (event) => {
     
-    this.setState({ selectedOption: event.target.value });
-    console.log(event.target.value, "checked");
+    this.setState({ selectedOption: event.target.value,
+                    disabled: true     
+     });
+    console.log(event.target.value);
+    console.log(this.state.disabled)
   };
 
   validate = () => {
@@ -110,28 +126,37 @@ export default class App extends React.Component {
     });
   };
 
+  wirelessNetworkNameHandler = (event) => {
+   this.setState({
+    wirelessNetworkName: event.target.value
+   })
+  }
+  securityKeyHandler = (event) => {
+   this.setState({
+    securityKey: event.target.value
+   })
+  }
+
+
   handlerSubmitForm = event => {
     event.preventDefault();
     const isValid = this.validate();
 
     if (isValid) {
       console.log(this.state);
-      this.setState({
-        ethernetIP: "",
-        ethernetSubnet: "",
-        ethernetDNS: "",
-        wirelessIP: "",
-        wirelessSubnet: "",
-        wirelessDNS: ""
-      });
+      this.setState(initialState);
     }
+    event.target.reset()
   };
 
   render() {
     return (
-      <form className="body" onSubmit={this.handlerSubmitForm}>
+      <form className="body" onSubmit={this.handlerSubmitForm} >
         <div className="block-left">
           <EthernetForm
+            ethernetIP={this.ethernetIP}
+            ethernetSubnet={this.ethernetSubnet}
+            ethernetDNS={this.ethernetDNS}
             handlerIP={this.handlerIP}
             handlerSubnet={this.handlerSubnet}
             handlerDNS={this.handlerDNS}
@@ -139,11 +164,16 @@ export default class App extends React.Component {
             errorSubnet={this.state.errorSubnet}
             errorDNS={this.state.errorDNS}
             handerOptionChange={this.handerOptionChange}
+            disabled={this.disabled}
+            
           />
         </div>
 
         <div className="block-right">
           <WirelessForm
+            wirelessIP={this.wirelessIP}
+            wirelessSubnet={this.wirelessSubnet}
+            wirelessDNS={this.wirelessDNS}
             wirelessHandlerIP={this.wirelessHandlerIP}
             wirelessHandlerSubnet={this.wirelessHandlerSubnet}
             wirelessHandlerDNS={this.wirelessHandlerDNS}
@@ -151,6 +181,10 @@ export default class App extends React.Component {
             wirErrorSubnet={this.state.wirErrorSubnet}
             wirErrorDNS={this.state.wirErrorDNS}
             handerOptionChange={this.handerOptionChange}
+            wirelessNetworkName={this.wirelessNetworkName}
+            wirelessNetworkNameHandler={this.wirelessNetworkNameHandler}
+            securityKey={this.securityKey}
+            securityKeyHandler={this.securityKeyHandler}
           />
         </div>
         <Buttons />

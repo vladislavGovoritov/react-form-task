@@ -9,7 +9,10 @@ export default function WirelessForm(props)  {
   const  {wirelessIP, wirelessSubnet, wirelessDNS,
           wirelessHandlerIP,wirelessHandlerSubnet,wirelessHandlerDNS,
           wirErrorIP,wirErrorSubnet,wirErrorDNS,
-          selectedOption, handerOptionChange} = props
+          selectedOption, handerOptionChange,
+          wirelessNetworkName, securityKey,
+          securityKeyHandler, wirelessNetworkNameHandler
+        } = props
     
     return (
       <div>
@@ -17,7 +20,11 @@ export default function WirelessForm(props)  {
           <strong>Wireless Settings</strong>
         </div>
         <div className="wForm1">
-         <WirelessFormItem1 
+         <WirelessFormItem1
+           wirelessNetworkName={ wirelessNetworkName}
+           wirelessNetworkNameHandler={wirelessNetworkNameHandler}
+           securityKey={securityKey}
+           securityKeyHandler={securityKeyHandler}
          />
         </div>
 
@@ -34,8 +41,8 @@ export default function WirelessForm(props)  {
           </label>
 
           <WirelessFormItem2
-          textIP={wirelessIP}
-          textSubnet={wirelessSubnet}
+          wirelessIP={wirelessIP}
+          wirelessSubnet={wirelessSubnet}
           wirelessHandlerIP={wirelessHandlerIP}
           wirelessHandlerSubnet={wirelessHandlerSubnet}
           wirErrorIP={wirErrorIP}
@@ -61,7 +68,7 @@ export default function WirelessForm(props)  {
           </label>
 
           <WirelessFormItem3
-          textDNS={wirelessDNS}
+          wirelessDNS={wirelessDNS}
           wirelessHandlerDNS={wirelessHandlerDNS}
           wirErrorDNS={wirErrorDNS}
           selectedOption={selectedOption}

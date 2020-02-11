@@ -8,7 +8,8 @@ export default function EthernetForm(props)  {
     const { ethernetIP,  ethernetSubnet,  ethernetDNS,
             handlerIP, handlerDNS, handlerSubnet,
             errorIP, errorSubnet, errorDNS,
-            selectedOption , handerOptionChange
+            selectedOption , handerOptionChange,
+            disabled
            } = props;
 
     return (
@@ -18,8 +19,10 @@ export default function EthernetForm(props)  {
         </div>
           <div className="iForm1">
           <label className="label-style">
-            <input type="radio" value='option1'
-            defaultChecked={selectedOption === 'option1'}
+            <input 
+            type="radio" 
+            value='option1'
+            defaultChecked
             onChange={handerOptionChange}
             name='selected1'
             
@@ -27,14 +30,15 @@ export default function EthernetForm(props)  {
             Obtain an IP address automatically(DHCP/BootP)
           </label>
           <EthernetFormItem1
-            textIP={ethernetIP}
-            textSubnet={ethernetSubnet}
+            ethernetIP={ethernetIP}
+            ethernetSubnet={ethernetSubnet}
             handlerIP={handlerIP}
             handlerSubnet={handlerSubnet}
             errorIP={errorIP}
             errorSubnet={errorSubnet}
             selectedOption={selectedOption}
             handerOptionChange={handerOptionChange}
+            disabled={disabled}
             
           />
         
@@ -52,7 +56,7 @@ export default function EthernetForm(props)  {
             Obtain DNS server address automatically
           </label>
           <EthernetFormItem2
-            textDNS={ethernetDNS}
+            ethernetDNS={ethernetDNS}
             handlerDNS={handlerDNS}
             errorDNS={errorDNS}
             handerOptionChange={handerOptionChange}

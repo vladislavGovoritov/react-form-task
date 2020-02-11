@@ -18,7 +18,14 @@ export const WirelessFormItem3 = (props) => {
 
       <label className="label-style">
         Preferred DNS server:
-        <input type="text" value={wirelessDNS} onChange={wirelessHandlerDNS} />
+        <input 
+        type="text" 
+        value={wirelessDNS} 
+        onChange={wirelessHandlerDNS}
+        minLength="11"
+        maxLength="15"
+        placeholder="example:223.255.255.1"
+         />
         <div style={{color:'red',fontSize:'12px'}}>{wirErrorDNS}</div>
       </label>
 

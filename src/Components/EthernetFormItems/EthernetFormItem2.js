@@ -22,10 +22,11 @@ export const EthernetFormItem2 = props => {
         pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"
         value={ethernetDNS}
         onChange={handlerDNS}
-        minLength="12"
+        minLength="11"
         maxLength="15"
-        formNoValidate
         placeholder="example:223.255.255.1"
+        formNoValidate
+        
         />
         <div style={{color:'red',fontSize:'12px'}}>{errorDNS}</div>
       </label>
