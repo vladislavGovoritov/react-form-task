@@ -1,38 +1,61 @@
 import React from "react";
+import "./style.css";
 
-export const WirelessFormItem3 = (props) => {
-    const {wirelessDNS, wirelessHandlerDNS,wirErrorDNS,
-           selectedOption, handerOptionChange} = props
-  return (
-    <React.Fragment>
-      <label className="label-style">
-        <input 
-        type="radio" 
-        value='option8' 
-        defaultChecked={selectedOption ==='option8' } 
-        onChange={handerOptionChange}
-        name='selected4'
-        />
-        Use the following DS server address:
-      </label>
+export default class WirelessFormItem3 extends React.Component {
+  state = {
+    isAutoMode: true
+  };
 
-      <label className="label-style">
-        Preferred DNS server:
-        <input 
-        type="text" 
-        value={wirelessDNS} 
-        onChange={wirelessHandlerDNS}
-        minLength="11"
-        maxLength="15"
-        placeholder="example:223.255.255.1"
-         />
-        <div style={{color:'red',fontSize:'12px'}}>{wirErrorDNS}</div>
-      </label>
+  handlerModeChange = () =>
+    this.setState(({ isAutoMode }) => ({
+      isAutoMode: !isAutoMode
+    }));
 
-      <label className="label-style">
-        Alternative DNS server:
-        <input type="text" />
-      </label>
-    </React.Fragment>
-  );
-};
+  render() {
+    const { wirelessDNS, wirelessHandlerDNS, wirErrorDNS } = this.props;
+
+    const { isAutoMode } = this.state;
+    return (
+      <React.Fragment>
+        <label className="label-style">
+          <input
+            type="radio"
+            value="auto4"
+            name="Automatic4"
+            checked={isAutoMode}
+            onChange={this.handlerModeChange}
+          />
+          Obtain DNS server address automatically
+        </label>
+        <label className="label-style">
+          <input
+            type="radio"
+            value="manual4"
+            name="Manual4"
+            checked={!isAutoMode}
+            onChange={this.handlerModeChange}
+          />
+          Use the following DS server address:{" "}
+        </label>
+
+        <label className={`ip ${isAutoMode ? "ip--disabled" : ""}`}>
+          Preferred DNS server:{" "}
+          <input
+            type="text"
+            value={wirelessDNS}
+            onChange={wirelessHandlerDNS}
+            minLength="11"
+            maxLength="15"
+            placeholder="example:223.255.255.1"
+            disabled={isAutoMode}
+          />
+          <div style={{ color: "red", fontSize: "12px" }}>{wirErrorDNS}</div>
+        </label>
+
+        <label className={`ip ${isAutoMode ? "ip--disabled" : ""}`}>
+          Alternative DNS server: <input type="text" disabled={isAutoMode} />
+        </label>
+      </React.Fragment>
+    );
+  }
+}
